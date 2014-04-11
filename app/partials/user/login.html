@@ -1,0 +1,11 @@
+<h1>Login</h1>
+<div ng-controller="LoginCtrl">
+<form>
+	<label>Username</label>
+	<input ng-model="user.username" />
+	<label>Password</label>
+	<input ng-model="user.password" />
+	<button ng-click="login()">Login</button>
+</form>
+<a href="#/user/new">Register</a>
+</div>

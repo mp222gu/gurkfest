@@ -1,0 +1,78 @@
+ 
+<div ng-controller="BudgetDesignCtrl" class="modal fade"  id="editModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+   <div class="modal-dialog" >
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="modalLabel">Design  Budget</h4>
+            <div class="{{info.cssClass || 'empty'}}">
+               <strong>{{info.text}}</strong>
+            </div>
+         </div>
+         <ul class="nav nav-tabs" id="tabContent">
+            
+         </ul>
+         <div class="modal-body">
+            <div class="tab-content">
+               <div class="tab-pane fade in active" id="info">
+                  <form style='width:400px'>
+                     <table>
+                        <tbody ng-repeat="item in budgetItems">
+                           <tr><td colspan="3">Categories</td></tr>
+                           <tr>
+                              <td><label>Name</label></td>
+                              <td><label>Budget</label></td>
+                              <td><label>Type</label></td>
+                           </tr>
+                           <tr>
+                              <td><input ng-model="item.name" required/></td>
+                              <td><input ng-model="item.amount" required/></td>
+                              <td><select  ng-model="item.type"/>
+                                 <option ng-repeat="type in types" ng-selected="type.name === item.type">{{type.name}}</option>
+                              </select>
+                              </td>
+                              <td><button ng-click="delete(item._id)">Delete</button></td>
+                           </tr>
+
+                        </tbody>
+                     </table>
+                  </form>
+                  
+          
+                  <form style='width:400px'>
+                     <table>
+                        <tr><td colspan="3">New Category</td></tr>
+                        <tr>
+                              <td><label>Name</label></td>
+                              <td><label>Budget</label></td>
+                              <td><label>Type</label></td>
+                           </tr>
+                           
+                           <tr>
+                              <td><input ng-model="newItem.name" required/></td>
+                              <td><input ng-model="newItem.amount" required/></td>
+                              <td><select  ng-model="newItem.type"/>
+                                 <option ng-repeat="type in types" >{{type.name}}</option>
+                              </select>
+                              </td>
+                              <td><button ng-click="add()">Add</button></td>
+                           </tr>
+
+                     </table>
+                     
+                  </form>
+               </div>
+            </div>
+         </div>
+           
+         
+         <div class="modal-footer">
+            
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" ng-click="save()" >Save changes</button>
+         </div>
+      </div>
+      </div><!-- /.modal-content -->
+   </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->    
+

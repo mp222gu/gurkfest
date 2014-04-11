@@ -1,0 +1,48 @@
+<div ng-controller="BudgetDetailCtrl">
+
+	<h1>{{budget.name}}</h1>
+	<table>
+	<tr>
+		<td><label>Start month</label></td><td><h4>Balance: <span ng-class="(balance > 0) ? 'black' : 'red'">{{balance}}</span></h4>
+	</tr>
+	<tr>
+		<td>
+			<select ng-model="budget.startMonth">
+				<option ng-selected="month === currentMonth" ng-repeat="month in months">{{month}}</option>
+			</select>
+
+		</td>
+	</tr>
+</table>
+	<table class="table table-bordered ">
+		<thead>
+			<th>Category</th>
+			<th>Budget</th>
+			
+		</thead>
+
+		<tbody>
+			<tr><td colspan="2" class="Incomes">Incomes</td></tr>
+			<tr ng-repeat="item in incomes">
+				<td>{{item.name}}
+				<td>+{{item.amount}}</td>
+				
+			</tr>
+			<tr><td colspan="2" class="Expenses">Expenses</td></tr>
+			<tr ng-repeat="item in expenses">
+				<td>{{item.name}}
+				<td>-{{item.amount}}</td>
+				
+			</tr>
+			
+		</tbody>
+	</table>
+	<ul>
+		<li><a ng-click="design()"  class="link">Edit Categories</a></li>
+		<li><a ng-click="finalize()" class="link">Finalize Budget</a></li>
+	</ul>
+</div>
+		<div ng-include="'partials/budget/newRecordModal.html'"></div>
+		<div ng-include="'partials/budget/editModal.html'"></div>
+	
+	
